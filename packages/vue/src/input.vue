@@ -59,7 +59,7 @@ function handleDataTransfer(event: Event, transfer: DataTransfer | null) {
 
     const reader = new FileReader()
     reader.addEventListener('load', function () {
-      emit('send', segment(type, { src: reader.result }).toString())
+      emit('send', segment(type === 'image' ? 'img' : type, { src: reader.result }).toString())
     }, false)
     reader.readAsDataURL(file)
   }
